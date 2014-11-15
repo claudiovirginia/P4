@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGroupsTable extends Migration {
+class CreateAlbumsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateGroupsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('groups', function($table) {
+		Schema::create('albums', function($table) {
 		
 		# Increments method will make a Primary, Auto-Incrementing field.
         # Most tables start off this way
@@ -22,12 +22,11 @@ class CreateGroupsTable extends Migration {
         # keep track of changes to a row
         $table->timestamps();
 				
-        $table->integer('groupNo');
-		$table->string('groupName');
-        $table->string('musicType');
-	
-	
-    });
+        $table->integer('albumNo');
+		$table->string('albumName');
+		
+		#no FKs needed here
+	});
 	}
 
 	/**
@@ -37,7 +36,7 @@ class CreateGroupsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('groups');
+		Schema::drop('albums');
 	}
 
 }

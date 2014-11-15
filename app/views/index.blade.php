@@ -1,11 +1,11 @@
 @extends('_master')
 
 @section('title')
-	P3 Application
+	P4 Application
 @stop
 
 @section('body')
-		<h1>P3 Application - Developer's Best Friend</h1>
+		<h1>P4 Application - Music Store</h1>
 		<div>
 		<fieldset>	
 			<p>Lorem Ipsum Generator</p>
@@ -35,14 +35,20 @@
 					
 		<div>
 		<fieldset>	
-			<p>Password Generator (simplified version) </p>
-			<p>Inspired by the Password Strength comic, this application provides you with ten relatively complex, yet easy to remember passwords. Optionally, you can include numbers or symbols for additional complexity.</p>
-			<p>How many passwords would you like to generate?<p>
-				{{ Form::open(array('url' => '/password', 'method' => 'GET')) }}
-						{{ Form::label('value', 'Pick a number from the list ? '); }}
-						{{ Form::selectRange('number', 1, 10); }}
-						{{ Form::submit('Generate Password'); }}
-				{{ Form::close() }}
+			<p>Add New Group</p>
+			{{ Form::open(array('url' => '/add' )) }}
+				{{ Form::label('groupName','Group Name') }}
+				{{ Form::text('groupName'); }}
+
+				{{ Form::label('musicType', 'Music Type') }}
+				{{ Form::text('musicType'); }}
+		
+				{{ Form::label('groupNo', 'Group No') }}
+				{{ Form::text('groupNo'); }}
+				
+				{{ Form::submit('Add A New Group'); }}
+			{{ Form::close() }}
+
 		</fieldset>
 		</div>
 @stop

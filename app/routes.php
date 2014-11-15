@@ -1,5 +1,112 @@
 <?php
 
+
+#add group
+Route::post('/add', function() {
+
+	# Instantiate a new Group model class
+    $group = new Group();
+	
+	#set the data
+    $group->groupNo = Input::get('groupNo');
+	$group->groupName = Input::get('groupName');
+	$group->musicType = Input::get('musicType');
+	
+	#save record to DB
+	$group->save();
+	
+	#return 'A new group has been added! Check your database to see...';
+	return Redirect::to('/');
+});
+
+
+#practice-creating
+Route::get('/practice-creating', function() {
+
+    # Instantiate a new Book model class
+    $group = new Group();
+
+    # Set 
+    $group->groupNo = 101;
+    $group->groupName = 'Pat Metheny';
+    $group->musicType = 'Jazz';
+   
+
+    # This is where the Eloquent ORM magic happens
+    $group->save();
+
+    return 'A new group has been added! Check your database to see...';
+
+});
+
+#practice-reading
+Route::get('/practice-reading', function() {
+
+    # The all() method will fetch all the rows from a Model/table
+    $group = Group::all();
+
+    # Make sure we have results before trying to print them...
+    if($group->isEmpty() != TRUE) {
+
+        # Typically we'd pass $books to a View, but for quick and dirty demonstration, let's just output here...
+        foreach($group as $group) {
+            echo $group->groupNo;
+			echo $group->musicType;
+			echo $group->groupName.'<br>';
+        }
+    }
+    else {
+        return 'No books found';
+    }
+
+});
+
+#practice updating
+Route::get('/practice-updating', function() {
+
+    # First get a book to update
+    $group = Group::where('musicType', 'LIKE', '%Jazz%')->first();
+
+    # If we found the book, update it
+    if($group) {
+
+        # Give it a different title
+        $group->musicType = 'Jazz Rock';
+
+        # Save the changes
+        $group->save();
+
+        return "Update complete; check the database to see if your update worked...";
+    }
+    else {
+        return "group not found, can't update.";
+    }
+
+});
+
+#practice-deleting
+Route::get('/practice-deleting', function() {
+
+    # First get a book to delete
+    $group = Group::where('groupNo', 'LIKE', '100')->first();
+
+    # If we found the book, delete it
+    if($group) {
+
+        # Goodbye!
+        $group->delete();
+
+        return "Deletion complete; check the database to see if it worked...";
+
+    }
+    else {
+        return "Can't delete - group not found.";
+    }
+
+});
+
+
+
 # /app/routes.php
 Route::get('/debug', function() {
 
