@@ -1,6 +1,86 @@
 <?php
 
 
+#login get
+Route::get('/login',
+    array(
+        'before' => 'guest',
+        function() {
+            return View::make('login');
+        }
+    )
+);
+
+#login post
+Route::post('/login', 
+    array(
+        'before' => 'csrf', 
+        function() {
+
+            $credentials = Input::only('email', 'password');
+
+            if (Auth::attempt($credentials, $remember = true)) {
+                return Redirect::intended('/')->with('flash_message', 'Welcome Back!');
+            }
+            else {
+                return Redirect::to('/login')->with('flash_message', 'Log in failed; please try again.');
+            }
+            return Redirect::to('login');
+        }
+    )
+);
+
+#logout 
+Route::get('/logout', function() {
+
+    # Log out
+    Auth::logout();
+
+    # Send them to the homepage
+    return Redirect::to('/');
+
+});
+
+
+#signup get
+Route::get('/signup',
+    array(
+        'before' => 'guest',
+        function() {
+            return View::make('signup');
+        }
+    )
+);
+
+#signup post
+Route::post('/signup', 
+    array(
+        'before' => 'csrf', 
+        function() {
+
+            $user = new User;
+            $user->email    = Input::get('email');
+            $user->password = Hash::make(Input::get('password'));
+
+            # Try to add the user 
+            try {
+                $user->save();
+            }
+            # Fail
+            catch (Exception $e) {
+                return Redirect::to('/signup')->with('flash_message', 'Sign up failed; please try again.')->withInput();
+            }
+
+            # Log the user in
+            Auth::login($user);
+
+            return Redirect::to('/')->with('flash_message', 'Welcome to Foobooks!');
+
+        }
+    )
+);
+
+
 #add group
 Route::post('/add', function() {
 
