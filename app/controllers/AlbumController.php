@@ -20,7 +20,7 @@ class AlbumController extends \BaseController {
 
 		
 	/**
-	* Show the "Add a albumform"
+	* Show the "Add a album form"
 	* @return View
 	*/
 	public function getCreate() {
@@ -71,7 +71,7 @@ class AlbumController extends \BaseController {
 
 
 	/**
-	* Show the "Edit a album form"
+	* Show the "Edit an album form"
 	* @return View
 	*/
 	public function getEdit($id) {
@@ -81,7 +81,7 @@ class AlbumController extends \BaseController {
 		}
 		catch(exception $e) {
 		    return Redirect::to('/album')
-				->with('flash_message', 'Album not found');
+				->with('flash_message', 'Album not found. Try another album to be edited');
 		}
 
     	return View::make('album_edit')
@@ -146,6 +146,7 @@ class AlbumController extends \BaseController {
 		echo $test;
 		
 			$query  = Input::get('query');
+			echo $query;
 
 			# We're demoing two possible return formats: JSON or HTML
 			$format = Input::get('format');

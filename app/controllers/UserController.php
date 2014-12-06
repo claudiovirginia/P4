@@ -23,9 +23,7 @@ class UserController extends BaseController {
 	* @return View
 	*/
 	public function getSignup() {
-
 		return View::make('user_signup');
-
 	}
 
 	/**
@@ -33,7 +31,6 @@ class UserController extends BaseController {
 	* @return Redirect
 	*/
 	public function postSignup() {
-
 		$rules = array(
 			'email' => 'required|email|unique:users,email',
 			'password' => 'required|min:6'

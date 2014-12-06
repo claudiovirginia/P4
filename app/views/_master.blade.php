@@ -27,6 +27,7 @@
 		@if(Auth::check())
 			<li><a href='/logout'>Log out {{ Auth::user()->email; }}</a></li>
 			<li><a href='/album'>All Albums</a></li>
+			<li><a href='/album/create'> Add Album</a></li>
 		@else
 			<li><a href='/signup'>Sign up</a> or <a href='/login'>Log in</a></li>
 		@endif

@@ -2,6 +2,13 @@
 
 /**
 * Album (Explicit Routing)
+create an album		http://localhost/album/create
+list all album 		http://localhost/album
+
+edit an album 		http://localhost/album/edit/2 - I am editiong album 2
+
+need to figure out: http://localhost/album/search
+
 */
 Route::get ('/album', 			'AlbumController@getIndex');
 Route::get ('/album/edit/{id}', 'AlbumController@getEdit');

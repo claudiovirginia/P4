@@ -7,9 +7,7 @@
 @section('content')
 
 	<h1>Albums</h1>
-	<div>
-		View Records as HTML
-	</div>
+	<h3>View as HTML</h3>
 	
 	@if($query)
 		<h2>You searched for {{{ $query }}}</h2>
@@ -19,14 +17,15 @@
 		No results
 	@else
 		@foreach($albums as $album)
-			<h3>{{ $album['albumName'] }} {{ $album['albumNo'] }}</h3>
+		<section class='boxed'>
+
+			<h3>Name:  {{ $album['albumName'] }}</h3>
+			<h3>Numb:  {{ $album['albumNo'] }}</h3>
+			
+			<p>	<a href='/album/edit/{{$album['id']}}'>Edit</a></p>
+			
+		</section>	
+			
 		@endforeach
 	@endif
 @stop
-
-
-
-
-
-
-

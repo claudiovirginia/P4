@@ -2,9 +2,19 @@ body { margin-left: 10%; margin-right: 10%; background: #ff9; }
 h4     { font-family: helvetica, sans-serif; border-bottom: thin dotted black; }
 h1 {	font-family: helvetica, sans-serif;}	
 div { background-color: #C0C0C0; color: navy; margin: 0.5em; padding: 0.5em; border-width: thick; border-style: solid; }
-.boxed { border: 2px solid green ; font-family: helvetica, sans-serif; color: #600; }
 label,input { display:block; margin-top:10px; }
 .flash-message { width:100%; position:absolute; top:0; left:0; background-color:yellow; text-align:center; padding:15px;}
 nav ul { list-style-type:none; padding:5px 0px 5px 0px;}
 nav ul li { display:inline; margin-right:10px;}
 a:link, a:visited, a:active, a:hover { text-decoration:underline; }
+.boxed {
+	border:1px solid #ccc;
+	padding:10px;
+	padding-top:0px;
+	float:left;
+	width:300px;
+	margin-right:10px;
+	margin-bottom:10px;
+	height:200px;
+
+}
