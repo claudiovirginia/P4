@@ -1,7 +1,7 @@
 @extends('_master')
 
 @section('title')
-	Log in
+	Log in for this Application
 @stop
 
 @section('content')
