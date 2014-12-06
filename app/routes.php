@@ -1,5 +1,25 @@
 <?php
 
+/**
+* Album (Explicit Routing)
+*/
+Route::get ('/album', 			'AlbumController@getIndex');
+Route::get ('/album/edit/{id}', 'AlbumController@getEdit');
+Route::post('/album/edit', 		'AlbumController@postEdit');
+Route::get ('/album/create', 	'AlbumController@getCreate');
+Route::post('/album/create', 	'AlbumController@postCreate');
+Route::post('/album/delete', 	'AlbumController@postDelete');
+
+## Ajax examples
+Route::get ('/album/search', 	'AlbumController@getSearch');
+Route::post('/album/search',	'AlbumController@postSearch');
+
+
+
+
+
+
+
 
 #login get
 Route::get('/login',
