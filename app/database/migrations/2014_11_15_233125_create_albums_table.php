@@ -32,7 +32,7 @@ class CreateAlbumsTable extends Migration {
 		$table->string('Release Date');
 		
 		#Define foreign keys...
-		$table->foreign('group_id')->references('id')->on('groups'); 
+		#$table->foreign('group_id')->references('id')->on('groups'); 
 			
 	});
 	}
