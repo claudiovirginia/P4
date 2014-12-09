@@ -6,9 +6,8 @@
 
 @section('content')
 
-	<h1>Albums</h1>
-	<h3>View as HTML</h3>
-	
+	<h2>Albums</h2>
+		
 	@if($query)
 		<h2>You searched for {{{ $query }}}</h2>
 	@endif
@@ -18,10 +17,11 @@
 	@else
 		@foreach($albums as $album)
 		<section class='boxed'>
-
-			<h3>Name:  {{ $album['albumName'] }}</h3>
-			<h3>Numb:  {{ $album['albumNo'] }}</h3>
-			
+			<h3>Group Id: {{ $album['group_id'] }}</h3>
+			<h3>Al. Name: {{ $album['albumName'] }}</h3>
+			<h3>Al. #:    {{ $album['albumNo'] }}</h3>
+			<h3>Genre:    {{ $album['genre'] }}</h3>
+						
 			<p>	<a href='/album/edit/{{$album['id']}}'>Edit</a></p>
 			
 		</section>	

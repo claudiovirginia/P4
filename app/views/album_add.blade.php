@@ -1,26 +1,31 @@
 @extends('_master')
 
 @section('title')
-	Add a new group
+	Add Album
 @stop
 
 @section('content')
 
-	<h1>Add a new Album</h1>
+	<h1>Add New Album</h1>
 
 	{{ Form::open(array('url' => '/album/create')) }}
 	
-		<br>
-		{{ Form::label('albumName','Album Name') }}
+		{{ Form::label('group_id','Group (It Belongs)') }}
+		{{ Form::select('group_id', $groups); }}
+	
+		{{ Form::label('albumName','Album Name *') }}
 		{{ Form::text('albumName'); }}
-			
-		<br>
-		{{ Form::label('albumNo', 'Album No') }}
+				
+		{{ Form::label('albumNo', 'Album No *') }}
 		{{ Form::text('albumNo'); }}
 		
+		{{ Form::label('genre', 'Genre') }}
+		{{ Form::text('genre'); }}
+					
 		<br>
 		{{ Form::submit('Add'); }}
 
 	{{ Form::close() }}
 
 @stop
+

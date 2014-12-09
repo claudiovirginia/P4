@@ -18,6 +18,15 @@ Route::post('/album/create', 	'AlbumController@postCreate');
 Route::post('/album/delete', 	'AlbumController@postDelete');
 
 
+Route::get ('/group', 			'GroupController@getIndex');
+Route::get ('/group/edit/{id}', 'GroupController@getEdit');
+Route::post('/group/edit', 		'GroupController@postEdit');
+Route::get ('/group/create', 	'GroupController@getCreate');
+Route::post('/group/create', 	'GroupController@postCreate');
+Route::post('/group/delete', 	'GroupController@postDelete');
+
+
+
 /**
 * User
 * (Explicit Routing)

@@ -10,20 +10,31 @@
 @section('content')
 
 	<h2>Edit the following album -> {{{ $album['albumName'] }}}</h2>
-
+	
+	
+	
 	{{---- EDIT -----}}
 	{{ Form::open(array('url' => '/album/edit')) }}
 
 		{{ Form::hidden('id',$album['id']); }}
-
+		
+		
 		<div class='form-group'>
+				    	
 			{{ Form::label('albumName','Album Name') }}
 			{{ Form::text('albumName', $album['albumName']); }}
 			
 			{{ Form::label('albumNo','Album No') }}
 			{{ Form::text('albumNo', $album['albumNo']); }}
+			
+			{{ Form::label('genre', 'Genre') }}
+			{{ Form::text('genre', $album['genre']); }}
+			
+			{{ Form::label('group_id','Group (It Belongs)') }}
+			{{ Form::select('group_id', $groups, $album->group_id); }}
+									
 		</div>
-		{{ Form::submit('Save'); }}
+			{{ Form::submit('Save'); }}
 	{{ Form::close() }}
 
 	
@@ -35,3 +46,6 @@
 	
 
 @stop
+
+
+

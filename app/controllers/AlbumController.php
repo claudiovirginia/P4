@@ -25,9 +25,12 @@ class AlbumController extends \BaseController {
 	*/
 	public function getCreate() {
 
-		//$authors = Author::getIdNamePair();
-    	//return View::make('book_add')->with('authors',$authors);
-		return View::make('album_add');
+		$groups = Array();
+		$collection = Group::all();
+		foreach($collection as $group) {
+			$groups[$group->groupNo] = $group->groupName;
+		}
+    	return View::make('album_add')->with('groups',$groups);
 	}
 	
 	/**
@@ -35,17 +38,27 @@ class AlbumController extends \BaseController {
 	* @return Redirect
 	*/
 	public function postCreate() {
-
+    
+	    #rules for validation
+		$rules = array('group_id' => 'required', 'albumName' => 'required', 'albumNo' => 'required');
+	    $validator = Validator::make(Input::all(), $rules);
+	    if($validator->fails()) {
+			return Redirect::to('/album/create')
+				->with('flash_message', 'Creation of an Album failed (some fields are mandatory);')
+				->withInput()
+				->withErrors($validator);
+		}
+		
+	
 		# Instantiate the album model
 		$album = new Album();
 
+		$album->group_id  = Input::get('group_id');
 		$album->albumName = Input::get('albumName');
-		$album->albumNo = Input::get('albumNo');
+		$album->albumNo   = Input::get('albumNo');
+		$album->genre     = Input::get('genre');
 		$album->save();
-
-		#return Redirect::to('/');
-		# Magic: Eloquent
-		#$album->save();
+		
 		return Redirect::action('AlbumController@getIndex')->with('flash_message','Your album has been added.');
 	}
 
@@ -78,6 +91,13 @@ class AlbumController extends \BaseController {
 
 		try {
 		    $album = Album::findOrFail($id);
+			
+			$groups = Array();
+			$collection = Group::all();
+			foreach($collection as $group) {
+				$groups[$group->groupNo] = $group->groupName;
+			}
+			
 		}
 		catch(exception $e) {
 		    return Redirect::to('/album')
@@ -85,7 +105,8 @@ class AlbumController extends \BaseController {
 		}
 
     	return View::make('album_edit')
-				->with('album', $album);
+				->with('album', $album)
+				->with('groups', $groups);
  	}
 
 
@@ -102,9 +123,10 @@ class AlbumController extends \BaseController {
 	        return Redirect::to('/album')
 				->with('flash_message', 'Album not found');
 	    }
-
+		$album->group_id  = Input::get('group_id');
 	    $album->albumName = Input::get('albumName');
-		$album->albumNo = Input::get('albumNo');
+		$album->albumNo   = Input::get('albumNo');
+		$album->genre     = Input::get('genre');
 		$album->save();
 
 	   	return Redirect::action('AlbumController@getIndex')
@@ -134,6 +156,7 @@ class AlbumController extends \BaseController {
 	}
 
 
+	
 	/**
 	* Process a album search
 	* Called w/ Ajax

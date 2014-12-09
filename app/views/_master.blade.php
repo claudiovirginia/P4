@@ -9,8 +9,7 @@
 	<link rel='stylesheet' href='/css/site.css' type='text/css'>
 	
 	@yield('head')
-		
-	
+
 </head>
 	
 <body>
@@ -24,18 +23,21 @@
 	
 	<nav>
 		<ul>
-		@if(Auth::check())
-			<li><a href='/logout'>Log out {{ Auth::user()->email; }}</a></li>
-			<li><a href='/album'>All Albums</a></li>
-			<li><a href='/album/create'> Add Album</a></li>
-		@else
-			<li><a href='/signup'>Sign up</a> or <a href='/login'>Log in</a></li>
-		@endif
+			@if(Auth::check())
+				<li><a href='/logout'>Log out {{ Auth::user()->email; }}</a></li>
+				<li><a href='/'>Home</a></li>
+				<li><a href='/album'>All Albums</a></li>
+				<li><a href='/album/create'>Add Album</a></li>
+				<li><a href='/group'>All Groups</a></li>
+				<li><a href='/group/create'>Add Group</a></li>
+			@else
+				<li><a href='/signup'>Sign up</a> or <a href='/login'>Log in</a></li>
+			@endif
 		</ul>
 	</nav>
 
 	@yield('content')
-	@yield('/body')
+	@yield('body')
 	
 </body>
 </html>
