@@ -17,10 +17,10 @@
 	@else
 		@foreach($albums as $album)
 		<section class='boxed'>
-			<h3>Group Id: {{ $album['group_id'] }}</h3>
-			<h3>Al. Name: {{ $album['albumName'] }}</h3>
-			<h3>Al. #:    {{ $album['albumNo'] }}</h3>
-			<h3>Genre:    {{ $album['genre'] }}</h3>
+			<h3>Group Id:   {{ $album['group_id'] }}</h3>
+			<h3>Album Name: {{ $album['albumName'] }}</h3>
+			<h3>Album #:    {{ $album['albumNo'] }}</h3>
+			<h3>Genre:      {{ $album['genre'] }}</h3>
 						
 			<p>	<a href='/album/edit/{{$album['id']}}'>Edit</a></p>
 			

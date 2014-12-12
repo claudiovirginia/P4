@@ -30,6 +30,8 @@
 				<li><a href='/album/create'>Add Album</a></li>
 				<li><a href='/group'>All Groups</a></li>
 				<li><a href='/group/create'>Add Group</a></li>
+				<li><a href='/member'>All Members</a></li>
+				<li><a href='/member/create'>Add Member</a></li>
 			@else
 				<li><a href='/signup'>Sign up</a> or <a href='/login'>Log in</a></li>
 			@endif

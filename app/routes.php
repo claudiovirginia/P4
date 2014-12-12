@@ -26,6 +26,13 @@ Route::post('/group/create', 	'GroupController@postCreate');
 Route::post('/group/delete', 	'GroupController@postDelete');
 
 
+Route::get ('/member', 			 'MemberController@getIndex');
+Route::get ('/member/edit/{id}', 'MemberController@getEdit');
+Route::post('/member/edit', 	 'MemberController@postEdit');
+Route::get ('/member/create', 	 'MemberController@getCreate');
+Route::post('/member/create', 	 'MemberController@postCreate');
+Route::post('/member/delete', 	 'MemberController@postDelete');
+
 
 /**
 * User

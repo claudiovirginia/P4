@@ -10,6 +10,13 @@
 		return $this->belongsTo('Group');
 	}
 		
+		
+	public static function validataData() {
+		#rules for validation
+		$rules = array('albumName' => 'required', 'albumNo' => 'required');
+		return $validator = Validator::make(Input::all(), $rules);
+	}		
+		
 	
     /**
     * Search among books, authors and tags
