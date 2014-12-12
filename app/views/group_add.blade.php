@@ -23,5 +23,10 @@
 		{{ Form::submit('Add'); }}
 
 	{{ Form::close() }}
+	
+	{{---- CANCEL -----}}
+	{{ Form::open(array('url' => '/group/cancel')) }}
+		{{ Form::submit('Cancel'); }}
+	{{ Form::close() }}
 
 @stop

@@ -22,8 +22,7 @@
 			<h3>Album #:    {{ $album['albumNo'] }}</h3>
 			<h3>Genre:      {{ $album['genre'] }}</h3>
 						
-			<p>	<a href='/album/edit/{{$album['id']}}'>Edit</a></p>
-			
+			<p><a href='/album/edit/{{$album['id']}}'>Edit</a></p>
 		</section>	
 			
 		@endforeach

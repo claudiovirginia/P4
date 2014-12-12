@@ -18,6 +18,16 @@ class GroupController extends \BaseController {
 		return View::make('group_search');
 	}
 
+	
+	/**
+	* Process the Cancel Button
+	* @return View
+	*/
+	public function postCancel() {
+		return Redirect::to('/group');
+	}
+		
+		
 		
 	/**
 	* Show the "Add a album form"

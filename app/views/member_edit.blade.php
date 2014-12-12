@@ -8,19 +8,12 @@
 @stop
 
 @section('content')
-
 	<h2>Edit the following member -> {{{ $member['memberName'] }}}</h2>
-	
-	
-	
+		
 	{{---- EDIT -----}}
 	{{ Form::open(array('url' => '/member/edit')) }}
-
 		{{ Form::hidden('id',$member['id']); }}
-		
-		
 		<div class='form-group'>
-				    	
 			{{ Form::label('memberName','Member Name') }}
 			{{ Form::text('memberName', $member['memberName']); }}
 			
@@ -32,11 +25,9 @@
 			
 			{{ Form::label('group_id','Group (It Belongs)') }}
 			{{ Form::select('group_id', $groups, $member->group_id); }}
-									
 		</div>
 			{{ Form::submit('Save'); }}
 	{{ Form::close() }}
-
 	
 	{{---- DELETE -----}}
 	{{ Form::open(array('url' => '/member/delete')) }}
@@ -44,6 +35,9 @@
 		<button onClick='parentNode.submit();return false;'>Delete</button>
 	{{ Form::close() }}
 	
+	{{---- CANCEL -----}}
+	{{ Form::open(array('url' => '/member/cancel')) }}
+		{{ Form::submit('Cancel'); }}
+	{{ Form::close() }}
 
 @stop
-

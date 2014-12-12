@@ -26,6 +26,9 @@
 		{{ Form::submit('Add'); }}
 
 	{{ Form::close() }}
+	
+	{{ Form::open(array('url' => '/member/cancel')) }}
+		{{ Form::submit('Cancel'); }}
+	{{ Form::close() }}
 
 @stop
-

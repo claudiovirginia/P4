@@ -16,16 +16,14 @@
 		No results
 	@else
 		@foreach($members as $member)
-		<section class='boxed'>
-			<h3>Group Id: 		{{ $member['group_id'] }}</h3>
-			<h3>Mem. Name: 		{{ $member['memberName'] }}</h3>
-			<h3>Mem. #:    		{{ $member['memberNo'] }}</h3>
-			<h3>Nationality:    {{ $member['nationality'] }}</h3>
+			<section class='boxed'>
+			<h3>Group Id: 	{{ $member['group_id'] }}</h3>
+			<h3>Name: 		{{ $member['memberName'] }}</h3>
+			<h3>No:    		{{ $member['memberNo'] }}</h3>
+			<h3>Nationality:{{ $member['nationality'] }}</h3>
 						
-			<p>	<a href='/member/edit/{{$member['id']}}'>Edit</a></p>
-			
-		</section>	
-			
+			<p><a href='/member/edit/{{$member['id']}}'>Edit</a></p>
+			</section>	
 		@endforeach
 	@endif
 @stop

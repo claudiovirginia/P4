@@ -1,14 +1,10 @@
 <?php
 
 /**
-* Album (Explicit Routing)
-create an album		http://localhost/album/create
-list all album 		http://localhost/album
-
-edit an album 		http://localhost/album/edit/2 - I am editiong album 2
-
-need to figure out: http://localhost/album/search
-
+ Here I am definign the routes for the following tables:
+	(1) Album
+	(2) Group
+	(3) Member
 */
 Route::get ('/album', 			'AlbumController@getIndex');
 Route::get ('/album/edit/{id}', 'AlbumController@getEdit');
@@ -16,6 +12,7 @@ Route::post('/album/edit', 		'AlbumController@postEdit');
 Route::get ('/album/create', 	'AlbumController@getCreate');
 Route::post('/album/create', 	'AlbumController@postCreate');
 Route::post('/album/delete', 	'AlbumController@postDelete');
+Route::post('/album/cancel', 	'AlbumController@postCancel');
 
 
 Route::get ('/group', 			'GroupController@getIndex');
@@ -24,6 +21,7 @@ Route::post('/group/edit', 		'GroupController@postEdit');
 Route::get ('/group/create', 	'GroupController@getCreate');
 Route::post('/group/create', 	'GroupController@postCreate');
 Route::post('/group/delete', 	'GroupController@postDelete');
+Route::post('/group/cancel', 	'GroupController@postCancel');
 
 
 Route::get ('/member', 			 'MemberController@getIndex');
@@ -32,6 +30,7 @@ Route::post('/member/edit', 	 'MemberController@postEdit');
 Route::get ('/member/create', 	 'MemberController@getCreate');
 Route::post('/member/create', 	 'MemberController@postCreate');
 Route::post('/member/delete', 	 'MemberController@postDelete');
+Route::post('/member/cancel', 	 'MemberController@postCancel');
 
 
 /**
@@ -127,33 +126,7 @@ Route::get('/trigger-error',function() {
 
 });
 
-
-
 #homepage
 Route::get('/', function() {
 	return View::make('index');
 });
-
-#truncate
-Route::get('/truncate', function() {
-    # Clear the tables to a blank slate
-    DB::statement('SET FOREIGN_KEY_CHECKS=0'); # Disable FK constraints so that all rows can be deleted, even if there's an associated FK
-    DB::statement('TRUNCATE groups');
-    DB::statement('TRUNCATE albums');
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

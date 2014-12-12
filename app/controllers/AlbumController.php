@@ -18,13 +18,20 @@ class AlbumController extends \BaseController {
 		return View::make('album_search');
 	}
 
+	/**
+	* Process the Cancel Button
+	* @return View
+	*/
+	public function postCancel() {
+		return Redirect::to('/album');
+	}
 		
 	/**
 	* Show the "Add a album form"
 	* @return View
 	*/
 	public function getCreate() {
-
+	
 		$groups = Array();
 		$collection = Group::all();
 		foreach($collection as $group) {
@@ -48,11 +55,9 @@ class AlbumController extends \BaseController {
 				->withInput()
 				->withErrors($validator);
 		}
-		
 	
 		# Instantiate the album model
 		$album = new Album();
-
 		$album->group_id  = Input::get('group_id');
 		$album->albumName = Input::get('albumName');
 		$album->albumNo   = Input::get('albumNo');

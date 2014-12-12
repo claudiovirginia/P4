@@ -21,11 +21,14 @@
 		
 		{{ Form::label('genre', 'Genre') }}
 		{{ Form::text('genre'); }}
-					
-		<br>
+				
 		{{ Form::submit('Add'); }}
 
 	{{ Form::close() }}
 
+	{{ Form::open(array('url' => '/album/cancel')) }}
+		{{ Form::submit('Cancel'); }}
+	{{ Form::close() }}
+	
 @stop
 

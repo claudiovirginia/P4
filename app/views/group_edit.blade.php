@@ -38,5 +38,9 @@
 		<button onClick='parentNode.submit();return false;'>Delete</button>
 	{{ Form::close() }}
 	
+	{{---- CANCEL -----}}
+	{{ Form::open(array('url' => '/group/cancel')) }}
+		{{ Form::submit('Cancel'); }}
+	{{ Form::close() }}
 
 @stop

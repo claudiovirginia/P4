@@ -3,7 +3,6 @@
 class MemberController extends \BaseController {
 
 	public function __construct() {
-
 		# Make sure BaseController construct gets called
 		parent::__construct();
 		$this->beforeFilter('auth', array('except' => 'getIndex'));
@@ -18,13 +17,21 @@ class MemberController extends \BaseController {
 		return View::make('member_search');
 	}
 
+	
+	/**
+	* Process the Cancel Button
+	* @return View
+	*/
+	public function postCancel() {
+		return Redirect::to('/member');
+	}
+			
 		
 	/**
-	* Show the "Add a album form"
+	* This is the add form for members
 	* @return View
 	*/
 	public function getCreate() {
-
 		$groups = Array();
 		$collection = Group::all();
 		foreach($collection as $group) {
@@ -35,7 +42,7 @@ class MemberController extends \BaseController {
 		
 	
 	/**
-	* Process the "Add a album form"
+	* Process the "Add form
 	* @return Redirect
 	*/
 	public function postCreate() {
@@ -51,9 +58,8 @@ class MemberController extends \BaseController {
 		}
 		
 	
-		# Instantiate the album model
+		# Instantiate the member model
 		$member = new Member();
-
 		$member->group_id   = Input::get('group_id');
 		$member->memberName = Input::get('memberName');
 		$member->memberNo   = Input::get('memberNo');
@@ -73,8 +79,7 @@ class MemberController extends \BaseController {
 		$format = Input::get('format', 'html');
 		$query  = Input::get('query');
 		$members = Member::search($query); #calling Member.php
-		#print_r($query);
-		
+				
 		if($format == 'html') {
 			return View::make('member_index')
 				->with('members', $members)
@@ -85,7 +90,7 @@ class MemberController extends \BaseController {
 
 
 	/**
-	* Show the "Edit an member form"
+	* This is the edit form
 	* @return View
 	*/
 	public function getEdit($id) {
@@ -112,7 +117,7 @@ class MemberController extends \BaseController {
 
 
 	/**
-	* Process the "Edit a album form"
+	* Process the "Edit a member form"
 	* @return Redirect
 	*/
 	public function postEdit() {
@@ -137,7 +142,7 @@ class MemberController extends \BaseController {
 
 
 	/**
-	* Process album deletion
+	* Process member deletion
 	*
 	* @return Redirect
 	*/
@@ -151,21 +156,8 @@ class MemberController extends \BaseController {
 	    }
 
 	    Member::destroy(Input::get('id'));
-
 	    return Redirect::to('/member/')->with('flash_message', 'Member deleted.');
 
 	}
-
-
-	
-	/**
-	* Process a album search
-	* Called w/ Ajax
-	**/
-	public function postSearch() {
-		#TBD
-	}
-	
-
 
 }
