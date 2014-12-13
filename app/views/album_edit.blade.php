@@ -19,7 +19,7 @@
 			{{ Form::label('albumNo','Album No') }}
 			{{ Form::text('albumNo', $album['albumNo']); }}
 			
-			{{ Form::label('genre', 'Genre') }}
+			{{ Form::label('genre', 'Album Genre') }}
 			{{ Form::text('genre', $album['genre']); }}
 			
 			{{ Form::label('group_id','Group (It Belongs)') }}

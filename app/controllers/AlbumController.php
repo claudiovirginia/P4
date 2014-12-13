@@ -87,8 +87,7 @@ class AlbumController extends \BaseController {
 		$format = Input::get('format', 'html');
 		$query  = Input::get('query');
 		$albums = Album::search($query); #calling Album.php
-		#print_r($query);
-		
+				
 		if($format == 'html') {
 			return View::make('album_index')
 				->with('albums', $albums)
@@ -165,51 +164,7 @@ class AlbumController extends \BaseController {
 	    }
 
 	    Album::destroy(Input::get('id'));
-
 	    return Redirect::to('/album/')->with('flash_message', 'Album deleted.');
-
 	}
-
-
-	
-	/**
-	* Process a album search
-	* Called w/ Ajax
-	**/
-	public function postSearch() {
-		$test = "I am here";
-		echo $test;
-			
-		if(Request::ajax()) {
-		echo $test;
-		
-			$query  = Input::get('query');
-			echo $query;
-
-			# We're demoing two possible return formats: JSON or HTML
-			$format = Input::get('format');
-
-			# Do the actual query
-	        $albums  = Album::search($query);
-
-	        
-	        # Otherwise, loop through the results building the HTML View we'll return
-	        if($format == 'html') {
-			echo $test;
-			
-		        $results = '';
-				foreach($albums as $album) {
-					# Created a "stub" of a view called book_search_result.php; all it is is a stub of code to display a book
-					# For each book, we'll add a new stub to the results
-					$results .= View::make('album_search_result')->with('album', $album)->render();
-				}
-
-				# Return the HTML/View to JavaScript...
-				return $results;
-			}
-		}
-	}
-	
-
 
 }
