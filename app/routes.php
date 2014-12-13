@@ -34,6 +34,12 @@ Route::post('/member/cancel', 	 'MemberController@postCancel');
 
 
 /**
+* Debug
+* (Implicit Routing)
+*/
+Route::controller('debug', 'DebugController');
+
+/**
 * User
 * (Explicit Routing)
 */
@@ -96,20 +102,6 @@ Route::get('/debug', function() {
 
 
 #test database
-Route::get('mysql-test', function() {
-
-    # Print environment
-    echo 'Environment: '.App::environment().'<br>';
-
-    # Use the DB component to select all the databases
-    $results = DB::select('SHOW DATABASES;');
-
-    # If the "Pre" package is not installed, you should output using print_r instead
-    echo Pre::render($results);
-
-});
-
-
 
 #get-environment
 Route::get('/get-environment',function() {
@@ -119,13 +111,6 @@ Route::get('/get-environment',function() {
 });
 
 #trigger-error
-Route::get('/trigger-error',function() {
-
-    # Class Foobar should not exist, so this should create an error
-    $foo = new Foobar;
-
-});
-
 #homepage
 Route::get('/', function() {
 	return View::make('index');

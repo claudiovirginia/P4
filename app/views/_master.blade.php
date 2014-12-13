@@ -26,12 +26,12 @@
 				</div>
 				
 				<div class='form-group'>
-					<li><a href='/album'>All Albums</a></li>
-					<li><a href='/album/create'>Add Album</a></li>
-								
 					<li><a href='/group'>All Groups</a></li>
 					<li><a href='/group/create'>Add Group</a></li>
-				
+					
+					<li><a href='/album'>All Albums</a></li>
+					<li><a href='/album/create'>Add Album</a></li>
+									
 					<li><a href='/member'>All Members</a></li>
 					<li><a href='/member/create'>Add Member</a></li>
 				</div>	

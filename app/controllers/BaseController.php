@@ -9,5 +9,4 @@ class BaseController extends Controller {
 
 	}
 	
-	
 }

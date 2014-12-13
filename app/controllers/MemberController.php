@@ -19,6 +19,16 @@ class MemberController extends \BaseController {
 
 	
 	/**
+	* Special method that gets triggered if the user enters a URL for a method that does not exist
+	*
+	* @return String
+	*/
+	public function missingMethod($parameters = array()) {
+		return 'Method "'.$parameters[0].'" not found';
+	}
+	
+	
+	/**
 	* Process the Cancel Button
 	* @return View
 	*/
