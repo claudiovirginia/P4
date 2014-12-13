@@ -61,7 +61,7 @@ class UserController extends BaseController {
 
 		# Log in
 		Auth::login($user);
-		return Redirect::to('/')->with('flash_message', 'Welcome to Music Store!');
+		return Redirect::to('/')->with('flash_message', 'Welcome to my Music Database');
 
 	}
 

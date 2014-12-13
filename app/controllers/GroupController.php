@@ -8,8 +8,7 @@ class GroupController extends \BaseController {
 		parent::__construct();
 		$this->beforeFilter('auth', array('except' => 'getIndex'));
 	}
-	
-	
+
 	
 	/**
 	* Special method that gets triggered if the user enters a URL for a method that does not exist
@@ -68,7 +67,6 @@ class GroupController extends \BaseController {
 				->with('flash_message', 'Creation of a Group failed (some fields are mandatory)')
 				->withInput()->withErrors($validator);
 		}
-
 		
 		# Instantiate the album model
 		$group = new Group();
@@ -90,8 +88,7 @@ class GroupController extends \BaseController {
 		$format = Input::get('format', 'html');
 		$query  = Input::get('query');
 		$groups = Group::search($query); #calling group.php
-		#print_r($query);
-		
+			
 		if($format == 'html') {
 			return View::make('group_index')
 				->with('groups', $groups)
@@ -106,14 +103,6 @@ class GroupController extends \BaseController {
 	* @return View
 	*/
 	public function getEdit($id) {
-
-		#call Group.php to validata data
-		#$validator = Group::validataData(); 
-		#if($validator->fails()) {
-		#	return Redirect::to('/group/edit')
-		#	->with('flash_message', 'Saving of a Group failed (some fields are mandatory)')
-		#	->withInput()->withErrors($validator);
-		#}	
 		
 		try {
 		    $group = Group::findOrFail($id);
@@ -122,12 +111,6 @@ class GroupController extends \BaseController {
 		    return Redirect::to('/group')->with('flash_message', 'group not found. Try another group to be edited');
 		}
 		
-		#$validator = Group::validataData();
-		#if($validator->fails()) {
-			#return Redirect::to('/group/edit')
-			#->with('flash_message', 'Saving of a Group failed (some fields are mandatory)')
-			#->withInput()->withErrors($validator);
-		#} 
 		return View::make('group_edit')->with('group', $group);
 	}
 	
@@ -172,16 +155,6 @@ class GroupController extends \BaseController {
 	    Group::destroy(Input::get('id'));
 	    return Redirect::to('/group/')->with('flash_message', 'Group deleted.');
 
-	}
-
-
-	/**
-	* Process a group search
-	* Called w/ Ajax
-	**/
-	public function postSearch() {
-		#TBD
-		
 	}
 
 }

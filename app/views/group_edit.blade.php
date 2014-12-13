@@ -24,7 +24,7 @@
 			{{ Form::label('groupNo','Group No *') }}
 			{{ Form::text('groupNo', $group['groupNo']); }}
 			
-			{{ Form::label('gnre', 'Genre') }}
+			{{ Form::label('genre', 'Genre') }}
 			{{ Form::text('genre', $group['genre']); }}
 			
 		</div>

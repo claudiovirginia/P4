@@ -12,12 +12,11 @@
 	<br>
     {{ Form::label('email') }}
     {{ Form::text('email') }}
-	<br>
+	
     {{ Form::label('password') }}
     {{ Form::password('password') }}
 
     {{ Form::submit('Submit') }}
-
 {{ Form::close() }}
 
 @stop

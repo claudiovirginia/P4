@@ -102,12 +102,9 @@ Route::get('/debug', function() {
 
 
 #test database
-
 #get-environment
 Route::get('/get-environment',function() {
-
     echo "Environment: ".App::environment();
-
 });
 
 #trigger-error
